@@ -2,9 +2,9 @@
 
 - **Mã đề:**
 - **Họ tên:**nguyễn đăng hoàng
-- **Lớp:**
-- **Link repository:**
-- **Hệ điều hành (Windows/macOS):**
+- **Lớp:**cntt 1
+- **Link repository:https://github.com/hoangmit1904/bai-on-tap.git
+- **Hệ điều hành (Windows/macOS):**windows
 
 ## 4.2. Thao tác máy tính cơ bản bằng CLI
 
