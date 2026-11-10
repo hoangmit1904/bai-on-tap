@@ -1,7 +1,7 @@
 # BÀI LÀM –(CHỦ ĐỀ QUẢN LÝ MODEL AI)
 
 - **Mã đề:**
-- **Họ tên:**
+- **Họ tên:**nguyễn đăng hoàng
 - **Lớp:**
 - **Link repository:**
 - **Hệ điều hành (Windows/macOS):**
@@ -11,14 +11,92 @@
 ### Các lệnh đã chạy
 
 ```shell
-# Ghi lần lượt các lệnh đã chạy, mỗi lệnh một dòng
-
+cd C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai
+C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai> get-childitem -force
+C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai> mv tai_lieu_ban_giao.txt docs
+PS C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai> mkdir backupcp
+cp data/chi_phi_model_thang_11.xlsx backup
+PS C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai> remove-item model_cache_01.tmp 
+get-childitem -force -recurse
 ```
 
 ### Kết quả liệt kê toàn bộ dự án (Windows: Get-ChildItem -Recurse -Force; macOS: ls -aR)
 
 ```text
-(Dán kết quả vào đây – xoá dòng này)
+Directory: C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+d-----        11/10/2026  11:48 PM                backup            
+d-----        11/10/2026  11:36 PM                data              
+d-----        11/10/2026  11:45 PM                docs              
+d-----        11/10/2026  11:36 PM                evidence          
+d-----        11/10/2026  11:37 PM                logs              
+d-r---        11/10/2026  12:51 PM                web               
+-a----        11/10/2026  12:51 PM             96 .env              
+-a----        11/10/2026  12:51 PM           2665 bai_lam.md        
+
+
+    Directory: 
+    C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai\backup
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+-a----        11/10/2026  12:51 PM           5815 chi_phi_model_than
+                                                  g_11.xlsx         
+
+
+    Directory: 
+    C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai\data
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+-a----        11/10/2026  12:51 PM           5815 Chi_Phi_Model_Than
+                                                  g_11.xlsx         
+
+
+    Directory: 
+    C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai\docs
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+-a----        11/10/2026  12:51 PM            204 tai_lieu_ban_giao.
+                                                  txt               
+
+
+    Directory: 
+    C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai\logs
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+-a----        11/10/2026  12:51 PM           1234 inference_log     
+
+
+    Directory: 
+    C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai\web
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+d-r---        11/10/2026  12:51 PM                images            
+-a----        11/10/2026  12:51 PM            644 app.js            
+-a----        11/10/2026  12:51 PM            567 index.html        
+-a----        11/10/2026  12:51 PM            460 style.css         
+
+
+    Directory: 
+    C:\Users\User\Downloads\starter-kit\quan-ly-mode-ai\web\images
+
+
+Mode                 LastWriteTime         Length Name              
+----                 -------------         ------ ----              
+-a----        11/10/2026  12:51 PM            339 logo-ai-hub.png   
+
 
 ```
 
@@ -27,26 +105,33 @@
 ### a) Lệnh lọc các dòng ERROR
 
 ```shell
-# Ghi lệnh vào đây (xoá dòng này)
-
+Get-Content .\logs\inference_logs | Select-String "ERROR" | ForEach-Object { $_.Line } | Set-Content .\logs\loi_model.txt
+PS C:\Users\User\Downloads\starter-kit\quan-ly-model-ai> get-content ./logs/loi_model.txt 
 ```
 
 ### 2 dòng đầu tiên trong logs/loi_model.txt
+2026-11-10 08:27:45 ERROR POST /v1/chat/completions model=CLAUDE-35
+2026-11-10 08:31:12 ERROR POST /v1/audio/transcriptions model=WHISPER-V3
+2026-11-10 08:42:15 ERROR POST /v1/chat/completions model=DEEPSEEK-R1
+2026-11-10 08:49:51 ERROR POST /v1/images/generations model=FLUX-PRO
+2026-11-10 08:53:33 ERROR POST /v1/chat/completions model=CLAUDE-35
+2026-11-10 09:05:27 ERROR POST /v1/embeddings model=MISTRAL-L
 
 ```text
-(Dán kết quả vào đây – xoá dòng này)
+
 
 ```
 
 ### b) Lệnh đếm số dòng WARNING và kết quả
 
 ```shell
-# Ghi lệnh vào đây (xoá dòng này)
+(Get-Content .\logs\inference_logs | Select-String "WARNING").Count
+>> 
 
 ```
 
 ```text
-(Dán kết quả đếm vào đây – xoá dòng này)
+5
 
 ```
 
